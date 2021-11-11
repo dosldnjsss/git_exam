@@ -1,0 +1,56 @@
+//회원가입 버튼 클릭시 유효성 체크
+function checkWrite(){
+	
+	document.getElementById("writeNameDiv").innerText="";
+	document.getElementById("writeIdDiv").innerText="";
+	document.getElementById("writePwdDiv").innerText="";
+	document.getElementById("writeRepwdDiv").innerText="";
+	document.getElementById("writePhoneDiv").innerText="";
+	document.getElementById("writeEmailDiv").innerText="";
+	
+	if(document.writeForm.writeName.value==""){
+		document.getElementById("writeNameDiv").innerText="이름을 입력하세요";
+	}else if(document.writeForm.writeId.value==""){
+		document.getElementById("writeIdDiv").innerText="아이디를 입력하세요";
+	}else if(document.writeForm.writePwd.value ==""){
+		document.getElementById("writePwdDiv").innerText="비밀번호를 입력하세요";
+	}else if(document.writeForm.writeRepwd.value !=document.writeForm.pwd.value){
+		document.getElementById("writeRepwdDiv").innerText="비밀번호가 다릅니다.";
+	}else if(document.writeForm.writeTel2.value==""){
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요"
+	}else if(document.writeForm.writeTel3.value==""){
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요"
+	}else if(document.writeForm.writeEmail1.value==""){
+		document.getElementById("writeEmailDiv").innerText="이메일을 입력하세요";
+	}else if(document.writeForm.writeEmail2.value==""){
+		document.getElementById("writeEmailDiv").innerText="이메일을 입력하세요";
+	}
+	
+}
+//아이디 중복 체크
+function checkId(id){
+	
+	document.getElementById("writeIdDiv").innerText="";
+	
+	if(document.writeForm.writeId.value==""){
+		document.getElementById("writeIdDiv").innerText="아이디를 입력하세요.";
+	}else{
+		window.open("http://localhost:8080/radiant/member/checkId.do?id="+id,
+					"writeCheckId",//창 중복 방지
+					"width=500 height=200 top=200 right=200");
+	}
+	
+}
+//아이디 중복체크 후 결과 넘기기
+function closeIdCheck(){
+	window.opener.document.writeForm.writeId.value = document.getElementById("checkUserId").innerHTML;
+	opener.document.writeForm.writeIdDuplication.value="idCheck";
+	close();
+	opener.writeForm.focus();
+}
+
+
+function inputIdChk(){
+	document.writeForm.writeIdDuplication.value="idUncheck";
+	console.log("check");
+}

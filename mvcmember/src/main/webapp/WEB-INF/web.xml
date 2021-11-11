@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>mvcmember</display-name>
+  
+  <servlet>
+  	<servlet-name>ControlServlet</servlet-name>
+  	<servlet-class>com.control.ControlServlet</servlet-class>
+  	<init-param><!--properties 등록 - 이 파일을 참조해라(처음에)  -->
+  		<param-name>propertyConfig</param-name>
+  		<param-value>D:/java_ee/workspace/mvcmember/src/main/webapp/WEB-INF/command.properties</param-value>
+  		<!--드라이브 경로 : \하면 인식 못함 / 또는 \\로 수정해야한다. -->
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ControlServlet</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!--http://localhost:8080/mvcmember/ControlServlet -> 서블릿 요청 -->
+  <!--http://localhost:8080/mvcmember/~~~.do -> 서블릿 요청(앞에 어떤 글자가 와도 상관없다 : */ 대신 뒤에는 .do를 써라) -->
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
